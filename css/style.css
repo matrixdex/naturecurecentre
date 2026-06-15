@@ -386,7 +386,22 @@ section { padding: 6rem 0; }
   .hero-right { height: 50vh; }
   .hero-img-card { display: none; }
 }
-
+@media (max-width: 500px) {
+  .no-mob {
+    display: none;
+  }
+  .hero-trust-row {
+    flex-direction: column;
+    align-items: start;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .hero-trust {
+    
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
 /* ── INTRO STRIP ── */
 .intro-strip {
   background: var(--green-800);
@@ -523,7 +538,6 @@ section { padding: 6rem 0; }
   border-radius: var(--radius-xl);
   overflow: hidden;
   aspect-ratio: 4/5;
-  
 }
 .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
 .about-img-badge {
@@ -577,6 +591,16 @@ section { padding: 6rem 0; }
 @media (max-width: 900px) {
   .about-inner { grid-template-columns: 1fr; gap: 3rem; }
   .about-img-badge { right: 0; }
+}
+@media (max-width: 500px) {
+  .about-img-frame {
+    padding-right: 0;
+  }
+  .about-accreditations {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
 }
 
 /* ── TESTIMONIALS ── */
