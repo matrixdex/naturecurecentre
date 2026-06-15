@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Treatments — Nature Cure Centre London</title>
+  <meta name="description" content="Acupuncture, Acupressure, Marma Therapy and Naturopathic Medicine at Nature Cure Centre, Marylebone, London." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .treatment-detail { background: var(--white); }
+    .treatment-detail:nth-child(even) { background: var(--beige-50); }
+    .treatment-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 5rem 0;
+    }
+    .treatment-row.reverse { direction: rtl; }
+    .treatment-row.reverse > * { direction: ltr; }
+    .treatment-visual {
+      background: var(--green-100);
+      border-radius: var(--radius-xl);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .treatment-visual-num {
+      font-family: var(--serif);
+      font-size: 10rem;
+      font-weight: 300;
+      color: var(--green-200);
+      line-height: 1;
+    }
+    .treatment-text .section-tag { margin-bottom: 0.75rem; }
+    .treatment-text h2 { margin-bottom: 1.25rem; }
+    .treatment-text p { color: var(--ink-muted); line-height: 1.85; margin-bottom: 1rem; }
+    .benefit-list { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.5rem 0; }
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .benefit-check {
+      width: 20px; height: 20px;
+      background: var(--green-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--green-600);
+      font-size: 0.7rem;
+    }
+    @media (max-width: 900px) {
+      .treatment-row { grid-template-columns: 1fr; gap: 2rem; }
+      .treatment-row.reverse { direction: ltr; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        Nature Cure Centre
+        <span>Marylebone, London</span>
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="treatments.html" class="active">Treatments</a></li>
+        <li><a href="conditions.html">Conditions</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="tel:+447950379038" class="nav-phone">+44 795 037 9038</a></li>
+        <li><a href="../index.html#contact" class="btn btn-primary nav-cta">Book a Consultation</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <span class="section-tag">Our Specialities</span>
+      <h1>Treatments</h1>
+      <p>Each therapy is drawn from centuries of wisdom, delivered with precision and genuine care.</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a> <span>›</span> <span>Treatments</span></div>
+    </div>
+  </div>
+
+  <!-- Acupuncture -->
+  <section class="treatment-detail" id="acupuncture">
+    <div class="container">
+      <div class="treatment-row">
+        <div class="treatment-visual reveal">
+          <div class="treatment-visual-num">01</div>
+        </div>
+        <div class="treatment-text reveal reveal-delay-2">
+          <span class="section-tag">Traditional Chinese Medicine</span>
+          <h2>Acupuncture</h2>
+          <p>Acupuncture is one of the world's oldest and most respected healing traditions. By inserting fine, sterile needles into specific acupoints along the body's energy meridians, we stimulate the flow of Qi — the body's vital force — to restore balance and promote healing.</p>
+          <p>Used for over 3,000 years, acupuncture is now supported by a growing body of modern research confirming its effectiveness across a wide range of conditions.</p>
+          <div class="benefit-list">
+            <div class="benefit-item"><div class="benefit-check">✓</div>Relieves chronic and acute pain</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Reduces inflammation and swelling</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Improves sleep quality</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Supports mental and emotional wellbeing</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Regulates hormones and the immune system</div>
+          </div>
+          <a href="../index.html#contact" class="btn btn-primary">Book Acupuncture</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acupressure -->
+  <section class="treatment-detail" id="acupressure">
+    <div class="container">
+      <div class="treatment-row reverse">
+        <div class="treatment-visual reveal">
+          <div class="treatment-visual-num">02</div>
+        </div>
+        <div class="treatment-text reveal reveal-delay-2">
+          <span class="section-tag">Ancient Chinese Healing</span>
+          <h2>Acupressure</h2>
+          <p>Acupressure applies the same principles as acupuncture — working along the body's meridians and acupoints — but uses targeted fingertip pressure rather than needles. This makes it a gentle, accessible therapy suitable for all ages.</p>
+          <p>Developed alongside acupuncture in ancient China, acupressure is particularly effective for those seeking a non-invasive, deeply relaxing treatment that also carries therapeutic benefit.</p>
+          <div class="benefit-list">
+            <div class="benefit-item"><div class="benefit-check">✓</div>Relieves muscle tension and stiffness</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Promotes deep relaxation</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Eases headaches and migraines</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Improves circulation</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Suitable for all ages, including children</div>
+          </div>
+          <a href="../index.html#contact" class="btn btn-primary">Book Acupressure</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marma Therapy -->
+  <section class="treatment-detail" id="marma">
+    <div class="container">
+      <div class="treatment-row">
+        <div class="treatment-visual reveal">
+          <div class="treatment-visual-num">03</div>
+        </div>
+        <div class="treatment-text reveal reveal-delay-2">
+          <span class="section-tag">Ayurvedic Tradition</span>
+          <h2>Marma Therapy</h2>
+          <p>Marma Therapy is an ancient Ayurvedic practice that works with 107 vital energy points — called Marma points — located throughout the body at junctions of muscles, veins, ligaments, and bones. Stimulating these points releases blocked prana (life energy) and promotes profound healing.</p>
+          <p>Each session is uniquely tailored, often incorporating specialist oils and gentle massage alongside precise point work to enhance the therapeutic effect.</p>
+          <div class="benefit-list">
+            <div class="benefit-item"><div class="benefit-check">✓</div>Releases deep-seated physical and emotional blockages</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Supports neurological and joint health</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Promotes lymphatic drainage</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Enhances energy and vitality</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Deepens mind-body awareness</div>
+          </div>
+          <a href="../index.html#contact" class="btn btn-primary">Book Marma Therapy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Naturopathic Medicine -->
+  <section class="treatment-detail" id="naturopathy">
+    <div class="container">
+      <div class="treatment-row reverse">
+        <div class="treatment-visual reveal">
+          <div class="treatment-visual-num">04</div>
+        </div>
+        <div class="treatment-text reveal reveal-delay-2">
+          <span class="section-tag">Holistic Healthcare</span>
+          <h2>Naturopathic Medicine</h2>
+          <p>Naturopathic Medicine is a holistic approach to health that addresses the whole person — body, mind, and spirit. By combining natural remedies, nutritional counselling, herbal medicine, and lifestyle guidance, it treats the root cause of illness rather than simply managing symptoms.</p>
+          <p>Mr. Shaikh's naturopathic consultations are comprehensive and deeply personalised, often incorporating dietary analysis, herbal prescriptions, and supplement recommendations alongside complementary therapies.</p>
+          <div class="benefit-list">
+            <div class="benefit-item"><div class="benefit-check">✓</div>Identifies and addresses root causes</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Personalised nutritional counselling</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Herbal and natural remedies</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Lifestyle and preventive health guidance</div>
+            <div class="benefit-item"><div class="benefit-check">✓</div>Integrates seamlessly with other therapies</div>
+          </div>
+          <a href="../index.html#contact" class="btn btn-primary">Book Naturopathy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="container">
+      <h2>Ready to Begin?</h2>
+      <p>Contact us to discuss which treatment is right for you.</p>
+      <a href="../index.html#contact" class="btn btn-light">Book a Consultation</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0">
+        <p>© 2026 Nature Cure Centre Ltd. All rights reserved. · <a href="../index.html" style="color:var(--green-400)">Back to Home</a></p>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
