@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Natural Massage Oils & Muesli · Nature Cure Centre</title>
+  <meta name="description" content="Organic massage oils and breakfast muesli from Nature Cure Centre — natural products crafted to support healing, restoration and balance at home." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+</head>
+<body>
+
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="nav" class="nav--on-dark" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Nature Cure Centre home">
+        Nature Cure Centre
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#treatments">Treatments</a></li>
+        <li><a href="../index.html#conditions">Conditions</a></li>
+        
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="retreat.html">Retreat</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        
+        <li><a href="../index.html#contact" class="btn btn-primary nav-cta">Book a Consultation</a></li>
+      </ul>
+      <button class="nav-close" id="navClose" aria-label="Close menu">
+        <span class="nav-close-icon"></span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="color: var(--green-200);">Crafted With Natural Ingredients</span>
+      <h1 style="color: var(--white);">Our Products</h1>
+      <p style="color: var(--green-100);">Organic massage oils and breakfast muesli, formulated to bring the same principles of natural healing into your everyday routine at home.</p>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>／</span>
+        <span>Products</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRODUCTS ══ -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">The Range</span>
+        <h2>Massage Oils &amp; Muesli</h2>
+        <div class="ornament"><span class="ornament-leaf">✦</span></div>
+        <p>Every product is made from natural, organic ingredients — free from synthetic fragrance, preservatives and refined sugar.</p>
+      </div>
+
+      <div class="products-tabs" role="tablist" aria-label="Filter products by category">
+        <button class="products-tab active" data-filter="all" role="tab" aria-selected="true">All Products</button>
+        <button class="products-tab" data-filter="Massage Oil" role="tab" aria-selected="false">Massage Oils</button>
+        <button class="products-tab" data-filter="Healing Oil" role="tab" aria-selected="false">Healing Oils</button>
+        <button class="products-tab" data-filter="Breakfast Muesli" role="tab" aria-selected="false">Breakfast Muesli</button>
+        <button class="products-tab" data-filter="Health Food" role="tab" aria-selected="false">Health Foods</button>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Lavender Calm Massage Oil -->
+        <div class="product-card reveal reveal-delay-1" data-product="lavender-calm" data-category="Massage Oil">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/lav_oil.png">
+          </div>
+          <span class="product-category">Massage Oil</span>
+          <h3>Relaxing Massage Oil</h3>
+          <p class="product-desc">Soothing blend of lavender, roman chamomile and tea tree oil to refresh and relax</p>
+          <div class="product-price">£18.00</div>
+          <button class="btn btn-outline product-view-btn" data-product="lavender-calm">View Details</button>
+        </div>
+
+        <!-- Sinus Oil -->
+        <div class="product-card reveal reveal-delay-2" data-product="ginger-sesame" data-category="Healing Oil">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/sinus_oil.png">
+          </div>
+          <span class="product-category">Healing Oil</span>
+          <h3>Sinus Oil</h3>
+          <p class="product-desc">Effective blend of mustard oil, sesame oil, and blackseed (Kolonji) oil for nasal congestion, blocked sinuses and frontal headache</p>
+          <div class="product-price">£19.50</div>
+          <button class="btn btn-outline product-view-btn" data-product="ginger-sesame">View Details</button>
+        </div>
+
+        <!-- Joint Support Oil -->
+        <div class="product-card reveal reveal-delay-3" data-product="marma-ritual" data-category="Massage Oil">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/jo_oil.png">
+          </div>
+          <span class="product-category">Massage Oil</span>
+          <h3>Joint Support Oil</h3>
+          <p class="product-desc">Blend of natural oils to use in inflammation of muscles, ligaments and joints</p>
+          <div class="product-price">£22.00</div>
+          <button class="btn btn-outline product-view-btn" data-product="marma-ritual">View Details</button>
+        </div>
+
+        <!-- Breakfast Mewa -->
+        <div class="product-card reveal reveal-delay-1" data-product="sprouted-classic" data-category="Breakfast Muesli">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/br_mewa.png">
+          </div>
+          <span class="product-category">Breakfast Muesli</span>
+          <h3>Nizam's Breakfast Mewa</h3>
+          <p class="product-desc">Handcrafted superfood of ancient India made with oats, almonds, pistachios, green raisins, barberries, dried orange peels, and saffron</p>
+          <div class="product-price">£9.50</div>
+          <button class="btn btn-outline product-view-btn" data-product="sprouted-classic">View Details</button>
+        </div>
+
+        <!-- Detox Powder -->
+        <div class="product-card reveal reveal-delay-2" data-product="digestive-balance" data-category="Health Food">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/detox.png">
+          </div>
+          <span class="product-category">Health Food</span>
+          <h3>Detox Powder</h3>
+          <p class="product-desc">Blend of time-tested traditional ingredients to be made into detox tea for detoxification and gut health</p>
+          <div class="product-price">£10.00</div>
+          <button class="btn btn-outline product-view-btn" data-product="digestive-balance">View Details</button>
+        </div>
+
+        <!-- Gut CLeansing Gel -->
+        <div class="product-card reveal reveal-delay-3" data-product="berry-antioxidant" data-category="Health Food">
+          <div class="product-image" aria-hidden="true">
+            <img src="../assets/gcgel.png">
+          </div>
+          <span class="product-category">Health Food</span>
+          <h3>Gut Cleansing Gel</h3>
+          <p class="product-desc">Blend of psyllium husk and basil seeds to cleanse the gut, meet dietary fiber needs, and relieve constipation</p>
+          <div class="product-price">£10.50</div>
+          <button class="btn btn-outline product-view-btn" data-product="berry-antioxidant">View Details</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══ -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Bring Nature Cure Home</h2>
+      <p>To order, get in touch and we'll arrange collection or delivery for you.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="../index.html#contact" class="btn btn-light">Enquire to Order</a>
+        <a href="tel:+447950379038" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.5)">
+          Call +44 795 037 9038
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Nature Cure Centre Ltd.</div>
+          <p>
+            Holistic natural healing in the heart of London.
+            Led by Shaikh Nizamuddin — naturopath and Integrated Acupuncturist — with over two decades of experience.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#treatments">Treatments</a></li>
+            <li><a href="../index.html#conditions">Conditions</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="cookies.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>98 Crawford Street<br>Marylebone, London W1H 2HL</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+447950379038">+44 795 037 9038</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:nizamalimed@gmail.com">nizamalimed@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Nature Cure Centre Ltd. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ PRODUCT DETAIL OVERLAY ══ -->
+  <div class="product-overlay" id="productOverlay" aria-hidden="true">
+    <div class="product-overlay-backdrop" data-close></div>
+    <div class="product-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="productOverlayTitle">
+      <button class="product-overlay-close" data-close aria-label="Close product details">&times;</button>
+      <div class="product-overlay-body">
+        <div class="product-overlay-media">
+          <div class="product-overlay-icon" id="productOverlayIcon" aria-hidden="true"></div>
+        </div>
+        <div class="product-overlay-content">
+          <span class="section-tag" id="productOverlayCategory"></span>
+          <h3 id="productOverlayTitle"></h3>
+          <div class="product-overlay-price" id="productOverlayPrice"></div>
+          <p id="productOverlayDesc"></p>
+          <div class="product-overlay-meta">
+            <div>
+              <strong>Key Ingredients</strong>
+              <p id="productOverlayIngredients"></p>
+            </div>
+            <div>
+              <strong>Best For</strong>
+              <p id="productOverlayBenefits"></p>
+            </div>
+          </div>
+          <div class="product-overlay-actions">
+            <a href="../index.html#contact" class="btn btn-primary" data-close>Enquire to Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

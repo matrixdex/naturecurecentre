@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagoor Clinic Retreat — Kangra Valley, Himachal Pradesh · Nature Cure Centre</title>
+  <meta name="description" content="A 15–30 day residential retreat in Kangra Valley, Himachal Pradesh. High-altitude walks, traditional massage and homecooked organic food in a four-bedroom cottage amidst the hills." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+  <style>
+    /* ── Retreat page specific styles ── */
+    .retreat-gallery {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 5rem;
+    }
+    .retreat-gallery-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--green-100);
+    }
+    .retreat-gallery-item.tall { grid-row: 1 / 3; }
+    .retreat-gallery-item svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .retreat-gallery-item.tall svg { aspect-ratio: 4/5; }
+    .retreat-gallery-item:not(.tall) svg { aspect-ratio: 16/9; }
+    @media (max-width: 700px) {
+      .retreat-gallery { grid-template-columns: 1fr; grid-template-rows: none; }
+      .retreat-gallery-item.tall { grid-row: auto; }
+    }
+
+    .retreat-detail-layout {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .retreat-detail-main h2 { margin-bottom: 1rem; }
+    .retreat-detail-main h3 { margin: 2.5rem 0 1rem; color: var(--green-800); }
+    .retreat-detail-main p { color: var(--ink-muted); line-height: 1.85; margin-bottom: 1.1rem; }
+    .retreat-pillars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin: 1.5rem 0 1rem;
+    }
+    .retreat-pillar {
+      background: var(--beige-50);
+      border: 1px solid var(--beige-200);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .retreat-pillar-icon {
+      width: 40px; height: 40px;
+      background: var(--green-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+      color: var(--green-700);
+    }
+    .retreat-pillar h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--green-800);
+      margin-bottom: 0.4rem;
+    }
+    .retreat-pillar p { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+    @media (max-width: 600px) {
+      .retreat-pillars { grid-template-columns: 1fr; }
+    }
+
+    /* Sidebar quick facts */
+    .retreat-sidebar {
+      background: var(--green-800);
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      position: sticky;
+      top: 7rem;
+    }
+    .retreat-sidebar h4 {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green-300);
+      margin-bottom: 1.5rem;
+    }
+    .retreat-sidebar-item {
+      display: flex;
+      gap: 0.85rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .retreat-sidebar-item:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .retreat-sidebar-icon { color: var(--green-300); flex-shrink: 0; margin-top: 2px; }
+    .retreat-sidebar-text strong {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-300);
+      margin-bottom: 0.25rem;
+    }
+    .retreat-sidebar-text span { font-size: 0.92rem; color: var(--beige-100); line-height: 1.5; }
+    .retreat-sidebar .btn { width: 100%; justify-content: center; margin-top: 1.75rem; }
+    @media (max-width: 900px) {
+      .retreat-detail-layout { grid-template-columns: 1fr; }
+      .retreat-sidebar { position: static; }
+    }
+
+    /* Enquiry form */
+    .retreat-form-section { background: var(--beige-100); }
+    .retreat-form-wrap {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .form-row .form-group { margin-bottom: 0; }
+    .form-group label {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--serif2);
+      font-size: 1rem;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--beige-300);
+      border-radius: var(--radius-md);
+      background: var(--beige-50);
+      color: var(--ink);
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--green-500);
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; font-family: var(--serif2); }
+    .form-submit-row { display: flex; align-items: center; gap: 1.25rem; margin-top: 0.5rem; flex-wrap: wrap; }
+    .form-note { font-size: 0.82rem; color: var(--ink-faint); }
+    .form-success {
+      display: none;
+      background: var(--green-50);
+      border: 1px solid var(--green-200);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--green-800);
+    }
+    .form-success.visible { display: block; }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      .retreat-form-wrap { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="nav" class="nav--on-dark" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Nature Cure Centre home">
+        Nature Cure Centre
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#treatments">Treatments</a></li>
+        <li><a href="../index.html#conditions">Conditions</a></li>
+        
+        <li><a href="products.html">Products</a></li>
+        <li><a href="retreat.html" class="active">Retreat</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        
+        <li><a href="#enquire" class="btn btn-primary nav-cta">Express Interest</a></li>
+      </ul>
+      <button class="nav-close" id="navClose" aria-label="Close menu">
+        <span class="nav-close-icon"></span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="color: var(--green-200);">Nature Cure Retreat</span>
+      <h1 style="color: var(--white);">Dr Ali's Himalayan Retreat</h1>
+      <p style="color: var(--green-100);">A residential retreat in Kangra Valley, Himachal Pradesh with high-altitude walks, massage and homecooked food, amidst some of the cleanest air in the world</p>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>／</span>
+        <span>Retreat</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY (PLACEHOLDER ILLUSTRATIONS) ══ -->
+  <section>
+    <div class="container">
+      <div class="retreat-gallery reveal">
+        <div class="retreat-gallery-item tall">
+          <svg viewBox="0 0 500 625" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="g1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8d5a0"/><stop offset="50%" stop-color="#cfc0a0"/><stop offset="100%" stop-color="#90bf94"/></linearGradient>
+              <linearGradient id="g1far" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6a9e6e"/><stop offset="100%" stop-color="#4e7a52"/></linearGradient>
+              <linearGradient id="g1near" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2e4a32"/><stop offset="100%" stop-color="#1a2e1f"/></linearGradient>
+            </defs>
+            <rect width="500" height="625" fill="url(#g1sky)"/>
+            <path d="M0 260 L70 190 L140 240 L210 170 L280 235 L350 180 L420 245 L500 200 L500 625 L0 625 Z" fill="url(#g1far)"/>
+            <path d="M210 170 L228 190 L192 194 Z" fill="#fdfaf5" opacity="0.75"/>
+            <path d="M350 180 L366 198 L334 201 Z" fill="#fdfaf5" opacity="0.6"/>
+            <path d="M0 420 Q130 370 260 405 Q380 435 500 390 L500 625 L0 625 Z" fill="url(#g1near)"/>
+            <g fill="#1a2e1f" opacity="0.6">
+              <path d="M90 400 L106 435 L74 435 Z"/><path d="M90 380 L102 405 L78 405 Z"/>
+              <path d="M140 415 L154 445 L126 445 Z"/><path d="M140 398 L151 420 L129 420 Z"/>
+              <path d="M400 395 L418 430 L382 430 Z"/><path d="M400 375 L414 402 L386 402 Z"/>
+            </g>
+            <text x="250" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f8f4ec" opacity="0.55" font-style="italic">Placeholder — Dhauladhar range view</text>
+          </svg>
+        </div>
+        <div class="retreat-gallery-item">
+          <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#deeede"/><stop offset="100%" stop-color="#90bf94"/></linearGradient></defs>
+            <rect width="500" height="280" fill="url(#g2)"/>
+            <g transform="translate(150,100)">
+              <path d="M0 60 L100 0 L200 60 Z" fill="#5c4f3a"/>
+              <rect x="20" y="60" width="160" height="90" fill="#7a6a50"/>
+              <rect x="85" y="105" width="30" height="45" fill="#3d3528"/>
+              <rect x="40" y="80" width="24" height="24" fill="#e8d5a0" opacity="0.85"/>
+              <rect x="136" y="80" width="24" height="24" fill="#e8d5a0" opacity="0.85"/>
+              <rect x="150" y="12" width="16" height="36" fill="#5c4f3a"/>
+            </g>
+            <text x="250" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#243828" opacity="0.55" font-style="italic">Placeholder — the cottage</text>
+          </svg>
+        </div>
+        <div class="retreat-gallery-item">
+          <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4e7a52"/><stop offset="100%" stop-color="#243828"/></linearGradient></defs>
+            <rect width="500" height="280" fill="url(#g3)"/>
+            <g stroke="#f8f4ec" stroke-width="2" fill="none" opacity="0.5">
+              <path d="M60 220 Q160 180 260 200 Q360 220 460 160"/>
+            </g>
+            <circle cx="120" cy="150" r="4" fill="#f8f4ec" opacity="0.6"/>
+            <circle cx="220" cy="120" r="4" fill="#f8f4ec" opacity="0.5"/>
+            <circle cx="340" cy="100" r="4" fill="#f8f4ec" opacity="0.5"/>
+            <text x="250" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f8f4ec" opacity="0.6" font-style="italic">Placeholder — the walking trail</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="retreat-detail-layout">
+        <div class="retreat-detail-main reveal">
+          <span class="section-tag">The Retreat</span>
+          <h2>Immersive healing, in <em class="display-italic">Nature</em></h2>
+          <p>
+            Nature Cure Centre's residential retreat is set in the Kangra Valley of Himachal Pradesh, at the foot of the Dhauladhar mountains. Guests stay in a four-bedroom cottage surrounded by pine forest, terraced farmland, and lush hills. This pristine environment is part of our treatment.
+          </p>
+          <p>
+            Our Himalayan Retreat treats the whole by removing patients from all that keeps them unwell. An escape from noise, air and light pollution, deadlines, and the hustle and bustle of cities, with clean mountain air, unhurried days and simple organic food.
+          </p>
+          <p>
+            Stays are between 15 and 30 days. Our Himalayan Retreat is a sublime place to recover from burnout, depression, anxiety or trauma, and post-COVID complications. Gradually through repetition, the same walk every morning, the same quiet evenings, the same home-cooked meals, the nervous system begins to settle on its own by calming its fight-or-flight response.
+          </p>
+
+          <h3>What a Stay Involves</h3>
+          <div class="retreat-pillars">
+            <div class="retreat-pillar">
+              <div class="retreat-pillar-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/><path d="M8 12l3 3 5-6"/></svg>
+              </div>
+              <h4>High-Altitude Walks</h4>
+              <p>Guided daily walks on hillside trails for strength and lung recovery</p>
+            </div>
+            <div class="retreat-pillar">
+              <div class="retreat-pillar-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4-4 7-7.5 7-12A7 7 0 005 10c0 4.5 3 8 7 12z"/><path d="M12 6v8"/></svg>
+              </div>
+              <h4>Massage</h4>
+              <p>Regular massage to release tension, manage pain and promote the body's innate healing</p>
+            </div>
+            <div class="retreat-pillar">
+              <div class="retreat-pillar-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12a8 4 0 0016 0"/><path d="M4 12v3a8 4 0 0016 0v-3"/><path d="M12 4v4"/></svg>
+              </div>
+              <h4>Homecooked Food</h4>
+              <p>Simple vegetarian meals prepared fresh from local produce for naturopathic nutrition</p>
+            </div>
+            <div class="retreat-pillar">
+              <div class="retreat-pillar-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h4>Clean Mountain Air</h4>
+              <p>Kangra Valley's pristine air is a rare, tangible form of relief for the body and mind</p>
+            </div>
+          </div>
+
+          <h3>Who This Is For</h3>
+          <p>
+            Nature Cure Centre's Himalayan Retreat is a reset for anyone feeling stuck. Clinically, our retreat aids recovery for patients suffering from anxiety, depression, trauma, and post-COVID complications. We also offer long-term care for the elderly.
+          </p>
+        </div>
+
+        <aside class="retreat-sidebar reveal reveal-delay-2">
+          <h4>Quick Facts</h4>
+          <div class="retreat-sidebar-item">
+            <div class="retreat-sidebar-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="retreat-sidebar-text">
+              <strong>Location</strong>
+              <span>Palampur, Himachal Pradesh, India</span>
+            </div>
+          </div>
+          <div class="retreat-sidebar-item">
+            <div class="retreat-sidebar-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="retreat-sidebar-text">
+              <strong>Duration</strong>
+              <span>15 – 30 days</span>
+            </div>
+          </div>
+          <div class="retreat-sidebar-item">
+            <div class="retreat-sidebar-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21v-2a4 4 0 014-4h6a4 4 0 014 4v2"/><circle cx="10" cy="7" r="4"/></svg>
+            </div>
+            <div class="retreat-sidebar-text">
+              <strong>Accommodation</strong>
+              <span>4-bedroom cottage, shared amongst guests</span>
+            </div>
+          </div>
+          <div class="retreat-sidebar-item">
+            <div class="retreat-sidebar-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c4-4 7-7.5 7-12A7 7 0 005 10c0 4.5 3 8 7 12z"/><path d="M12 6v8"/></svg>
+            </div>
+            <div class="retreat-sidebar-text">
+              <strong>Includes</strong>
+              <span>Daily walks, massage, all homecooked meals</span>
+            </div>
+          </div>
+          <div class="retreat-sidebar-item">
+            <div class="retreat-sidebar-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="retreat-sidebar-text">
+              <strong>Enquiries</strong>
+              <span>+44 795 037 9038</span>
+            </div>
+          </div>
+          <a href="#enquire" class="btn btn-light">Express Interest</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ENQUIRY FORM ══ -->
+  <section class="retreat-form-section" id="enquire">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Express Interest</span>
+        <h2>Enquire About <em class="display-italic">Himalayan Retreat</em></h2>
+        <div class="ornament"><span class="ornament-leaf">✦</span></div>
+        <p>Share details and we'll be in touch</p>
+      </div>
+
+      <div class="retreat-form-wrap reveal reveal-delay-1">
+        <form id="retreatForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rf-name">Full Name</label>
+              <input type="text" id="rf-name" name="name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="rf-phone">Phone Number</label>
+              <input type="tel" id="rf-phone" name="phone" placeholder="+44 7XXX XXXXXX" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="rf-email">Email Address</label>
+              <input type="email" id="rf-email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="rf-guests">Number of Guests</label>
+              <select id="rf-guests" name="guests" required>
+                <option value="" disabled selected>Select</option>
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="4+">More than 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rf-concerns">Chief Concerns</label>
+            <textarea id="rf-concerns" name="concerns" placeholder="e.g. stress and burnout, anxiety, recovering from a difficult period — whatever feels relevant to share"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rf-info">Other Information</label>
+            <textarea id="rf-info" name="info" placeholder="Preferred dates, length of stay, dietary requirements, or anything else we should know"></textarea>
+          </div>
+          <div class="form-submit-row">
+            <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+            
+          </div>
+          <div class="form-success" id="formSuccess">
+            Thank you — your enquiry has been received. A member of the team will be in touch shortly at the email or number you provided.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Nature Cure Centre Ltd.</div>
+          <p>
+            Holistic natural healing in the heart of London.
+            Led by Shaikh Nizamuddin — naturopath and Integrated Acupuncturist — with over two decades of experience.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#treatments">Treatments</a></li>
+            <li><a href="../index.html#conditions">Conditions</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="retreat.html">Retreat</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+            <li><a href="cookies.html">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>98 Crawford Street<br>Marylebone, London W1H 2HL</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+447950379038">+44 795 037 9038</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:nizamalimed@gmail.com">nizamalimed@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Nature Cure Centre Ltd. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Retreat enquiry form: client-side only (no backend configured).
+    // Shows a confirmation message on submit rather than actually sending data.
+    const retreatForm = document.getElementById('retreatForm');
+    const formSuccess = document.getElementById('formSuccess');
+    if (retreatForm) {
+      retreatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!retreatForm.checkValidity()) {
+          retreatForm.reportValidity();
+          return;
+        }
+        formSuccess.classList.add('visible');
+        retreatForm.reset();
+        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    }
+  </script>
+</body>
+</html>

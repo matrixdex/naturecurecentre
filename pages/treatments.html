@@ -65,20 +65,26 @@
   </style>
 </head>
 <body>
+  <!-- ══ NAVIGATION ══ -->
   <nav id="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">
+      <a href="index.html" class="nav-logo" aria-label="Nature Cure Centre home">
         Nature Cure Centre
-        <span>Marylebone, London</span>
+        
       </a>
       <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="treatments.html" class="active">Treatments</a></li>
-        <li><a href="conditions.html">Conditions</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-        <li><a href="tel:+447950379038" class="nav-phone">+44 795 037 9038</a></li>
-        <li><a href="../index.html#contact" class="btn btn-primary nav-cta">Book a Consultation</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#conditions">Conditions</a></li>
+        <li><a href="pages/products.html">Products</a></li>
+        <li><a href="#retreat">Retreat</a></li>
+        
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn btn-primary nav-cta">Book a Consultation</a></li>
       </ul>
+      <button class="nav-close" id="navClose" aria-label="Close menu">
+        <span class="nav-close-icon"></span>
+      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
