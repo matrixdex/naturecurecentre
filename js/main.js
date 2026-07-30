@@ -48,7 +48,7 @@ const PRODUCTS = {
   'lavender-calm': {
     category: 'Massage Oil',
     name: 'Relaxing Massage Oil',
-    price: '£18.00',
+    price: '£30.00',
     desc: 'A soothing, uplifting blend of lavender, roman chamomile and tea tree oil. Use gentle massage strokes, particularly along the back, neck and spine, to refresh and relax.',
     ingredients: 'Lavender, roman chamomile, tea tree oil.',
     benefits: 'Evening self-massage, easing tension, refreshing and relaxing the body and mind.',
@@ -66,7 +66,7 @@ const PRODUCTS = {
   'marma-ritual': {
     category: 'Massage Oil',
     name: 'Joint Support Oil',
-    price: '£25.00',
+    price: '£30.00',
     desc: 'A blend of natural oils formulated for use on inflammation of the muscles, ligaments and joints. Not tested on animals.',
     ingredients: 'Sesamum indicum (sesame seed oil), Brassica alba (mustard seed oil), Nigella sativa (black seed oil), Syzygium aromaticum (clove oil), Mahanarayan oil.',
     benefits: 'Muscle, ligament and joint inflammation, easing stiffness and discomfort.',
