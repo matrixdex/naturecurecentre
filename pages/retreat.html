@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sagoor Clinic Retreat — Kangra Valley, Himachal Pradesh · Nature Cure Centre</title>
+  <title>Himalayan Retreat — Kangra Valley, Himachal Pradesh · Nature Cure Centre</title>
   <meta name="description" content="A 15–30 day residential retreat in Kangra Valley, Himachal Pradesh. High-altitude walks, traditional massage and homecooked organic food in a four-bedroom cottage amidst the hills." />
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
@@ -11,8 +11,7 @@
     /* ── Retreat page specific styles ── */
     .retreat-gallery {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
       margin-bottom: 5rem;
     }
@@ -20,14 +19,11 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       background: var(--green-100);
+      aspect-ratio: 4 / 3;
     }
-    .retreat-gallery-item.tall { grid-row: 1 / 3; }
-    .retreat-gallery-item svg { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .retreat-gallery-item.tall svg { aspect-ratio: 4/5; }
-    .retreat-gallery-item:not(.tall) svg { aspect-ratio: 16/9; }
+    .retreat-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 700px) {
-      .retreat-gallery { grid-template-columns: 1fr; grid-template-rows: none; }
-      .retreat-gallery-item.tall { grid-row: auto; }
+      .retreat-gallery { grid-template-columns: 1fr; }
     }
 
     .retreat-detail-layout {
@@ -217,57 +213,21 @@
     </div>
   </section>
 
-  <!-- ══ GALLERY (PLACEHOLDER ILLUSTRATIONS) ══ -->
+  <!-- ══ GALLERY ══ -->
   <section>
     <div class="container">
       <div class="retreat-gallery reveal">
-        <div class="retreat-gallery-item tall">
-          <svg viewBox="0 0 500 625" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="g1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8d5a0"/><stop offset="50%" stop-color="#cfc0a0"/><stop offset="100%" stop-color="#90bf94"/></linearGradient>
-              <linearGradient id="g1far" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6a9e6e"/><stop offset="100%" stop-color="#4e7a52"/></linearGradient>
-              <linearGradient id="g1near" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2e4a32"/><stop offset="100%" stop-color="#1a2e1f"/></linearGradient>
-            </defs>
-            <rect width="500" height="625" fill="url(#g1sky)"/>
-            <path d="M0 260 L70 190 L140 240 L210 170 L280 235 L350 180 L420 245 L500 200 L500 625 L0 625 Z" fill="url(#g1far)"/>
-            <path d="M210 170 L228 190 L192 194 Z" fill="#fdfaf5" opacity="0.75"/>
-            <path d="M350 180 L366 198 L334 201 Z" fill="#fdfaf5" opacity="0.6"/>
-            <path d="M0 420 Q130 370 260 405 Q380 435 500 390 L500 625 L0 625 Z" fill="url(#g1near)"/>
-            <g fill="#1a2e1f" opacity="0.6">
-              <path d="M90 400 L106 435 L74 435 Z"/><path d="M90 380 L102 405 L78 405 Z"/>
-              <path d="M140 415 L154 445 L126 445 Z"/><path d="M140 398 L151 420 L129 420 Z"/>
-              <path d="M400 395 L418 430 L382 430 Z"/><path d="M400 375 L414 402 L386 402 Z"/>
-            </g>
-            <text x="250" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#f8f4ec" opacity="0.55" font-style="italic">Placeholder — Dhauladhar range view</text>
-          </svg>
+        <div class="retreat-gallery-item">
+          <img src="../assets/rt1.jpeg" alt="View of the snow-capped Dhauladhar mountain range from the retreat grounds">
         </div>
         <div class="retreat-gallery-item">
-          <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#deeede"/><stop offset="100%" stop-color="#90bf94"/></linearGradient></defs>
-            <rect width="500" height="280" fill="url(#g2)"/>
-            <g transform="translate(150,100)">
-              <path d="M0 60 L100 0 L200 60 Z" fill="#5c4f3a"/>
-              <rect x="20" y="60" width="160" height="90" fill="#7a6a50"/>
-              <rect x="85" y="105" width="30" height="45" fill="#3d3528"/>
-              <rect x="40" y="80" width="24" height="24" fill="#e8d5a0" opacity="0.85"/>
-              <rect x="136" y="80" width="24" height="24" fill="#e8d5a0" opacity="0.85"/>
-              <rect x="150" y="12" width="16" height="36" fill="#5c4f3a"/>
-            </g>
-            <text x="250" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#243828" opacity="0.55" font-style="italic">Placeholder — the cottage</text>
-          </svg>
+          <img src="../assets/rt3.jpeg" alt="Snow-capped Himalayan peaks seen across the Kangra Valley">
         </div>
         <div class="retreat-gallery-item">
-          <svg viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4e7a52"/><stop offset="100%" stop-color="#243828"/></linearGradient></defs>
-            <rect width="500" height="280" fill="url(#g3)"/>
-            <g stroke="#f8f4ec" stroke-width="2" fill="none" opacity="0.5">
-              <path d="M60 220 Q160 180 260 200 Q360 220 460 160"/>
-            </g>
-            <circle cx="120" cy="150" r="4" fill="#f8f4ec" opacity="0.6"/>
-            <circle cx="220" cy="120" r="4" fill="#f8f4ec" opacity="0.5"/>
-            <circle cx="340" cy="100" r="4" fill="#f8f4ec" opacity="0.5"/>
-            <text x="250" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#f8f4ec" opacity="0.6" font-style="italic">Placeholder — the walking trail</text>
-          </svg>
+          <img src="../assets/rt2.jpeg" alt="The village road and surrounding farmland near Sagoor Clinic">
+        </div>
+        <div class="retreat-gallery-item">
+          <img src="../assets/rt4.jpeg" alt="One of the four bedrooms at the retreat cottage">
         </div>
       </div>
     </div>
@@ -324,7 +284,7 @@
 
           <h3>Who This Is For</h3>
           <p>
-            Nature Cure Centre's Himalayan Retreat is a reset for anyone feeling stuck. Clinically, our retreat aids recovery for patients suffering from anxiety, depression, trauma, and post-COVID complications. We also offer long-term care for the elderly.
+            Nature Cure Centre's Himalayan Retreat is a reset for anyone feeling stuck. Clinically, our retreat aids recovery for patients suffering from anxiety, depression, trauma, and post-COVID complications. We offer weight loss and rehabilitation programs and long-term care for the elderly.
           </p>
         </div>
 
@@ -447,7 +407,7 @@
         <div class="footer-brand">
           <div class="logo">Nature Cure Centre Ltd.</div>
           <p>
-            Natural healing in the heart of London by Shaikh Nizamuddin, naturopath and Integrated Acupuncturist, with over three decades of experience
+            Natural healing in the heart of London by Nizam, naturopath and Integrated Acupuncturist, with two decades of experience
           </p>
         </div>
         <div class="footer-col">
@@ -484,6 +444,10 @@
           <div class="footer-contact-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <a href="mailto:nizamalimed@gmail.com">nizamalimed@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg>
+            <a href="https://www.naturecurecentre.com" target="_blank" rel="noopener noreferrer">naturecurecentre.com</a>
           </div>
         </div>
       </div>
