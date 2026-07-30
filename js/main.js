@@ -57,7 +57,7 @@ const PRODUCTS = {
   'ginger-sesame': {
     category: 'Healing Oil',
     name: 'Sinus Oil',
-    price: '£19.50',
+    price: '£12.00',
     desc: 'Traditionally used for nasal congestion, blocked sinuses and frontal headaches. Put 2 drops in each nostril and sniff, once or twice a day. Do not use if allergic to any of the ingredients.',
     ingredients: 'Mustard oil, sesame oil, blackseed oil (Kolonji oil).',
     benefits: 'Nasal congestion, blocked sinuses, frontal headache relief.',
@@ -66,7 +66,7 @@ const PRODUCTS = {
   'marma-ritual': {
     category: 'Massage Oil',
     name: 'Joint Support Oil',
-    price: '£22.00',
+    price: '£25.00',
     desc: 'A blend of natural oils formulated for use on inflammation of the muscles, ligaments and joints. Not tested on animals.',
     ingredients: 'Sesamum indicum (sesame seed oil), Brassica alba (mustard seed oil), Nigella sativa (black seed oil), Syzygium aromaticum (clove oil), Mahanarayan oil.',
     benefits: 'Muscle, ligament and joint inflammation, easing stiffness and discomfort.',
@@ -75,7 +75,7 @@ const PRODUCTS = {
   'sprouted-classic': {
     category: 'Breakfast Muesli',
     name: "Nizam's Breakfast Mewa",
-    price: '£9.50',
+    price: '£45.00',
     desc: "A handcrafted superfood of ancient India. Add one cup of mewa to one cup of milk, mix thoroughly, then heat for 7 minutes over a gas hob. Contains gluten and nuts.",
     ingredients: 'Oats, almonds, sliced pistachios, green raisins, barberries, dried orange peels, saffron.',
     benefits: 'Sustained morning energy, easy digestion, a nourishing start to the day.',
@@ -84,7 +84,7 @@ const PRODUCTS = {
   'digestive-balance': {
     category: 'Health Food',
     name: 'Detox Powder',
-    price: '£10.00',
+    price: '£30.00',
     desc: 'A blend of time-tested traditional ingredients, made into a detox tea for detoxification and gut health. Soak half a teaspoon in a cup of hot water and leave overnight. Strain the tea and drink on an empty stomach in the morning.',
     ingredients: 'Kadu (Swertia chirayata), Kariatu (Enicostemma littorale), Neem (Azadirachta indica), Amla (Emblica officinalis).',
     benefits: 'Detoxification, gut health, a gentle morning cleansing ritual.',
@@ -93,7 +93,7 @@ const PRODUCTS = {
   'berry-antioxidant': {
     category: 'Health Food',
     name: 'Gut Cleansing Gel',
-    price: '£10.50',
+    price: '£45.00',
     desc: 'A blend of psyllium husk and basil seeds to cleanse the gut, meet dietary fibre needs, and relieve constipation. Take 2 tablespoons mixed in a glass of water, stir for 1 minute and drink before bedtime.',
     ingredients: 'Psyllium husk, basil seeds.',
     benefits: 'Gut cleansing, dietary fibre support, constipation relief.',
