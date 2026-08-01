@@ -780,6 +780,14 @@ section { padding: 6rem 0; }
   display: flex;
   flex-direction: column;
   transition: var(--transition);
+  /* With auto-fit grid columns, a single card would otherwise stretch to
+     fill the full row width. Capping max-width keeps it the same size it
+     would be if 3+ cards were present, and margin: 0 auto centers it
+     within its grid track. Has no effect once 3+ cards fill each row,
+     since each track is already narrower than this cap. */
+  max-width: 350px;
+  width: 100%;
+  margin: 0 auto;
 }
 .product-card:hover {
   box-shadow: var(--shadow-md);
