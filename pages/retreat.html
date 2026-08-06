@@ -352,7 +352,15 @@
       </div>
 
       <div class="retreat-form-wrap reveal reveal-delay-1">
-        <form id="retreatForm" novalidate>
+        <form id="retreatForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Paste your Web3Forms access key below (get one free, no signup, at web3forms.com) -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="New Retreat Enquiry — Sagoor Clinic" />
+          <input type="hidden" name="from_name" value="Nature Cure Centre Website" />
+          <!-- Update this to your live domain if it differs from naturecurecentre.com -->
+          <input type="hidden" name="redirect" value="https://www.naturecurecentre.com/pages/thank-you.html" />
+          <!-- Honeypot field: real visitors never fill this in, bots often do -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
           <div class="form-row">
             <div class="form-group">
               <label for="rf-name">Full Name</label>
@@ -390,10 +398,6 @@
           </div>
           <div class="form-submit-row">
             <button type="submit" class="btn btn-primary">Submit Enquiry</button>
-            
-          </div>
-          <div class="form-success" id="formSuccess">
-            Thank you — your enquiry has been received. A member of the team will be in touch shortly at the email or number you provided.
           </div>
         </form>
       </div>
@@ -428,7 +432,7 @@
             <li><a href="terms.html">Terms &amp; Conditions</a></li>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="disclaimer.html">Disclaimer</a></li>
-            <li><a href="cookies.html">Cookie Policy</a></li>
+            
           </ul>
         </div>
         <div class="footer-col">
@@ -463,23 +467,5 @@
   </footer>
 
   <script src="../js/main.js"></script>
-  <script>
-    // Retreat enquiry form: client-side only (no backend configured).
-    // Shows a confirmation message on submit rather than actually sending data.
-    const retreatForm = document.getElementById('retreatForm');
-    const formSuccess = document.getElementById('formSuccess');
-    if (retreatForm) {
-      retreatForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!retreatForm.checkValidity()) {
-          retreatForm.reportValidity();
-          return;
-        }
-        formSuccess.classList.add('visible');
-        retreatForm.reset();
-        formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-    }
-  </script>
 </body>
 </html>
