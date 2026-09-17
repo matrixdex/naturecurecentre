@@ -691,12 +691,23 @@ section { padding: 6rem 0; }
 .about-content h2 { margin-bottom: 0.5rem; }
 .about-content p { margin-top: 1.25rem; color: var(--ink-muted); line-height: 1.85; }
 .about-accreditations {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "logos naturopath"
+    "acu   acu";
   align-items: center;
-  gap: 1.4rem;
+  column-gap: 3rem;
+  row-gap: 1.9rem;
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid var(--beige-200);
+}
+.accred-logos {
+  grid-area: logos;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }
 .accred-badge {
   font-family: var(--sans);
@@ -709,12 +720,17 @@ section { padding: 6rem 0; }
   border: 2px solid var(--beige-300);
   border-radius: 100px;
   padding: 0.4rem 1rem;
+  white-space: nowrap;
+  width: fit-content;
 }
 .accred-logo {
   height: 34px;
   width: auto;
   display: block;
 }
+.accred-atcm { height: 52px; }
+.accred-naturopath { grid-area: naturopath; justify-self: start; }
+.accred-acupuncturist { grid-area: acu; justify-self: start; }
 @media (max-width: 900px) {
   .about-inner { grid-template-columns: 1fr; gap: 3rem; }
   .about-img-badge { right: 0; }
@@ -726,8 +742,10 @@ section { padding: 6rem 0; }
   .about-accreditations {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
+    gap: 1rem;
   }
+  .accred-logos { gap: 2rem; align-items:end;}
 }
 
 /* ── TESTIMONIALS ── */
