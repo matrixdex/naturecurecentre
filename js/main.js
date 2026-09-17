@@ -66,11 +66,11 @@ const PRODUCTS = {
   'marma-ritual': {
     category: 'Massage Oil',
     name: 'Joint Support Oil',
-    price: '£30.00',
+    price: '£35.00',
     desc: 'A blend of natural oils formulated for use on inflammation of the muscles, ligaments and joints. Not tested on animals.',
     ingredients: 'Sesamum indicum (sesame seed oil), Brassica alba (mustard seed oil), Nigella sativa (black seed oil), Syzygium aromaticum (clove oil), Mahanarayan oil.',
     benefits: 'Muscle, ligament and joint inflammation, easing stiffness and discomfort.',
-    imageFile: 'jo_oil.png'
+    imageFile: 'jo_oil2.jpg'
   },
   'sprouted-classic': {
     category: 'Breakfast Muesli',
