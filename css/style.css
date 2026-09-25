@@ -138,6 +138,7 @@ section { padding: 6rem 0; }
   text-transform: uppercase;
   line-height: 1rem;
   padding: 0.85rem 2.2rem;
+  border: 1px solid transparent;
   border-radius: 100px;
   transition: var(--transition);
 }
@@ -152,7 +153,7 @@ section { padding: 6rem 0; }
   box-shadow: 0 6px 20px rgba(46,74,50,0.28);
 }
 .btn-outline {
-  border: 1px solid var(--green-700);
+  border-color: var(--green-700);
   color: var(--green-700);
 }
 .btn-outline:hover {
@@ -379,7 +380,7 @@ section { padding: 6rem 0; }
 .hero-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 6rem 4rem 4rem 6rem;
   position: relative;
   z-index: 1;
@@ -443,18 +444,23 @@ section { padding: 6rem 0; }
 .hero-right {
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 6rem 3rem 3rem;
 }
 .hero-img-wrap {
-  position: absolute;
-  inset: 0;
- 
+  position: relative;
+  width: 100%;
+  max-width: 528px;
+  overflow: hidden;
+  aspect-ratio: 3/2;
 }
 .hero-img-wrap img {
-  width: 90%; 
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  margin-top: 6.5rem;
-  margin-left: 0.8rem;  
-  
+  display: block;
 }
 .hero-img-overlay {
   position: absolute;
@@ -477,8 +483,8 @@ section { padding: 6rem 0; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 8rem 2rem 4rem; }
-  .hero-right { height: 50vh; }
+  .hero-right { order: -1; height: auto; padding: 1rem 1.5rem 1.5rem; align-items: center; }
+  .hero-left { order: 0; padding: 2rem 2rem 3rem; }
   .hero-img-card { display: none; }
 }
 @media (max-width: 500px) {
@@ -845,7 +851,7 @@ section { padding: 6rem 0; }
 .product-image {
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
   overflow: hidden;
   margin-bottom: 1.25rem;
   background: var(--green-100);
@@ -1175,7 +1181,7 @@ body.overlay-open { overflow: hidden; }
   width: 100%;
   max-height: 350px;
   object-fit: cover;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-xl);
 }
 @media (max-width: 900px) {
   .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
