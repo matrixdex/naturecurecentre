@@ -757,11 +757,14 @@ section { padding: 6rem 0; }
   }
   .about-accreditations {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 1rem;
   }
-  .accred-logos { gap: 2rem; align-items:end;}
+  .accred-logos { gap: 2rem; align-items:end; flex-basis: 100%; }
+  .accred-badge { font-size: 0.62rem; letter-spacing: 0.04em; padding: 0.4rem 0.8rem; }
+  .about-accreditations { gap: 0.6rem 0.5rem; }
 }
 
 /* ── TESTIMONIALS ── */
