@@ -731,11 +731,20 @@ section { padding: 6rem 0; }
   width: fit-content;
 }
 .accred-logo {
-  height: 34px;
+  height: 44px;
   width: auto;
   display: block;
 }
-.accred-atcm, .accred-ara { height: 52px; }
+.accred-logos a { display: block; line-height: 0; }
+@media (min-width: 901px) {
+  .about-accreditations {
+    grid-template-areas:
+      "logos logos"
+      "naturopath acu";
+    grid-template-columns: auto 1fr;
+  }
+  .accred-logos { flex-wrap: nowrap; gap: 2rem; }
+}
 .accred-naturopath { grid-area: naturopath; justify-self: start; }
 .accred-acupuncturist { grid-area: acu; justify-self: start; }
 @media (max-width: 900px) {
