@@ -713,6 +713,7 @@ section { padding: 6rem 0; }
   grid-area: logos;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 3rem;
 }
 .accred-badge {
@@ -734,7 +735,7 @@ section { padding: 6rem 0; }
   width: auto;
   display: block;
 }
-.accred-atcm { height: 52px; }
+.accred-atcm, .accred-ara { height: 52px; }
 .accred-naturopath { grid-area: naturopath; justify-self: start; }
 .accred-acupuncturist { grid-area: acu; justify-self: start; }
 @media (max-width: 900px) {
