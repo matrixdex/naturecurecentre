@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media — Patient Stories &amp; Moments · Nature Cure Centre</title>
+  <meta name="description" content="Patient stories, lectures and moments from Nizam's work in London and abroad, including Nanjing University of Chinese Medicine and the Academy of Scalp Acupuncture UK." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <style>
+    /* ── Patient story ── */
+    .story { background: var(--beige-50); }
+    .story-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+      gap: 5rem;
+      align-items: center;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .story-video {
+      margin: 0;
+    }
+    .story-video video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      background: var(--green-900);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    .story-video video::cue {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: #fff;
+      background: rgba(26, 46, 31, 0.78);
+    }
+    .media-caption,
+    .story-video figcaption,
+    .gallery-item figcaption {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      margin-top: 0.85rem;
+    }
+    .story-text .section-tag { display: block; margin-bottom: 1.25rem; }
+    .story-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      color: var(--green-800);
+    }
+    .story-text p { margin-top: 1.5rem; color: var(--ink-muted); line-height: 1.8; }
+    .story-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--green-300);
+      margin-top: 2rem;
+    }
+    .story-meta {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 1rem;
+    }
+
+    /* ── Gallery ── */
+    .gallery { background: var(--beige-100); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin: 0 0 2.5rem;
+    }
+    .gallery-open {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--beige-200);
+      cursor: zoom-in;
+    }
+    .gallery-open img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    }
+    .gallery-open:hover img { transform: scale(1.025); }
+    .gallery-open:focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4.5rem 5rem 2rem;
+      background: var(--green-900);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+    }
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.35s ease;
+    }
+    .lightbox-figure {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 100%;
+      max-height: 100%;
+      transform: scale(0.97);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .lightbox.open .lightbox-figure { transform: none; }
+    .lightbox-figure img {
+      max-width: 100%;
+      max-height: calc(100vh - 10rem);
+      max-height: calc(100dvh - 10rem);
+      width: auto;
+      height: auto;
+      border-radius: var(--radius-sm);
+    }
+    .lightbox-figure figcaption {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      letter-spacing: 0.02em;
+      color: var(--beige-200);
+      text-align: center;
+      margin-top: 1.1rem;
+      max-width: 560px;
+    }
+    .lightbox-count {
+      position: absolute;
+      top: 1.6rem;
+      left: 2rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: var(--green-300);
+    }
+    .lightbox-btn {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: var(--beige-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .lightbox-btn:hover { background: rgba(255, 255, 255, 0.08); }
+    .lightbox-btn:focus-visible { outline: 1px solid var(--beige-300); }
+    .lightbox-close { top: 1rem; right: 1.25rem; }
+    .lightbox-prev { left: 1.25rem; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 1.25rem; top: 50%; transform: translateY(-50%); }
+
+    @media (max-width: 900px) {
+      .story-inner { grid-template-columns: 1fr; gap: 3rem; justify-items: center; }
+      .story-video { width: 100%; max-width: 360px; }
+      .story-text { text-align: center; max-width: 560px; }
+      .story-rule { margin-left: auto; margin-right: auto; }
+      .gallery-grid { display: block; columns: 2; column-gap: 1.5rem; }
+      .gallery-col { display: contents; }
+    }
+    @media (max-width: 560px) {
+      .story-video { max-width: 280px; }
+      .gallery-grid { column-gap: 0.9rem; }
+      .gallery-item { margin-bottom: 1.4rem; }
+      .gallery-item figcaption { font-size: 0.7rem; margin-top: 0.55rem; }
+      .lightbox { padding: 4rem 0.75rem 1.5rem; }
+      .lightbox-prev, .lightbox-next { top: auto; bottom: 0.75rem; transform: none; }
+      .lightbox-prev { left: calc(50% - 56px); }
+      .lightbox-next { right: calc(50% - 56px); }
+      .lightbox-figure img { max-height: calc(100dvh - 12rem); }
+      .lightbox-figure figcaption { padding: 0 1rem; margin-bottom: 3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-open img, .lightbox, .lightbox-figure { transition: none; }
+      .gallery-open:hover img { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="nav" class="nav--on-dark" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo" aria-label="Nature Cure Centre home">
+        Nature Cure Centre
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#treatments">Treatments</a></li>
+        <li><a href="../index.html#conditions">Conditions</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="retreat.html">Retreat</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html#contact" class="btn btn-primary nav-cta">Book a Consultation</a></li>
+      </ul>
+      <button class="nav-close" id="navClose" aria-label="Close menu">
+        <span class="nav-close-icon"></span>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="section-tag" style="color: var(--green-200);">Stories &amp; Moments</span>
+      <h1 style="color: var(--white);">Media</h1>
+      <p style="color: var(--green-100);">Patient stories, lectures and moments from Nizam's work in London and abroad</p>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>／</span>
+        <span>Media</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PATIENT STORY ══ -->
+  <section class="story" aria-labelledby="storyTitle">
+    <div class="container">
+      <div class="story-inner">
+        <figure class="story-video reveal">
+          <video controls playsinline preload="metadata" poster="../assets/media/web/patient-story-poster.jpg" width="576" height="1024">
+            <source src="../assets/media/web/patient-story.mp4" type="video/mp4">
+            <track kind="subtitles" src="../assets/media/web/patient-story.en.vtt" srclang="en" label="English" default>
+            Your browser does not support embedded video.
+          </video>
+          <figcaption>A patient describes his recovery after a spinal injury. Subtitles available.</figcaption>
+        </figure>
+        <div class="story-text reveal reveal-delay-1">
+          <span class="section-tag">Patient Story</span>
+          <h2 class="story-quote" id="storyTitle">&ldquo;I can definitely say that it's been life-changing treatment.&rdquo;</h2>
+          <p>After a C6&ndash;C7 spinal injury left his right arm paralysed, this patient was treated by Nizam over five to six months with acupuncture, deep tissue massage, fire cupping and natural remedies. Today he has regained function and strength in his hand and arm.</p>
+          <div class="story-rule" aria-hidden="true"></div>
+          <div class="story-meta">Acupuncture · Massage · Cupping</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ══ -->
+  <section class="gallery" aria-labelledby="galleryTitle">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Around the World</span>
+        <h2 id="galleryTitle">Teaching &amp; Collaboration</h2>
+        <div class="ornament"><span class="ornament-leaf">✦</span></div>
+        <p>Lectures, ceremonies and time spent with fellow practitioners in the UK and China</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-col">
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="0" data-full="../assets/media/web/nanjing-drum-tower-ceremony-lg.jpg" aria-label="View larger: Certificate ceremony at the 5th Global Vision Week, Nanjing Drum Tower Hospital">
+                <img src="../assets/media/web/nanjing-drum-tower-ceremony-sm.jpg" srcset="../assets/media/web/nanjing-drum-tower-ceremony-sm.jpg 760w, ../assets/media/web/nanjing-drum-tower-ceremony-lg.jpg 1600w" sizes="(max-width: 900px) 50vw, 360px" width="760" height="570" alt="Certificate ceremony at the 5th Global Vision Week, Nanjing Drum Tower Hospital" loading="lazy" decoding="async">
+              </button>
+              <figcaption>Certificate ceremony at the 5th Global Vision Week, Nanjing Drum Tower Hospital</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="1" data-full="../assets/media/web/university-hall-lg.jpg" aria-label="View larger: In the main hall">
+                <img src="../assets/media/web/university-hall-sm.jpg" srcset="../assets/media/web/university-hall-sm.jpg 570w, ../assets/media/web/university-hall-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="In the main hall" loading="lazy" decoding="async">
+              </button>
+              <figcaption>In the main hall</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="2" data-full="../assets/media/web/njucm-faculty-lg.jpg" aria-label="View larger: With faculty members in Nanjing">
+                <img src="../assets/media/web/njucm-faculty-sm.jpg" srcset="../assets/media/web/njucm-faculty-sm.jpg 760w, ../assets/media/web/njucm-faculty-lg.jpg 1600w" sizes="(max-width: 900px) 50vw, 360px" width="760" height="570" alt="With faculty members in Nanjing" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With faculty members in Nanjing</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="3" data-full="../assets/media/web/colleague-classroom-lg.jpg" aria-label="View larger: With a colleague after a lecture">
+                <img src="../assets/media/web/colleague-classroom-sm.jpg" srcset="../assets/media/web/colleague-classroom-sm.jpg 570w, ../assets/media/web/colleague-classroom-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="With a colleague after a lecture" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With a colleague after a lecture</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="4" data-full="../assets/media/web/with-friends-lg.jpg" aria-label="View larger: With colleagues and friends">
+                <img src="../assets/media/web/with-friends-sm.jpg" srcset="../assets/media/web/with-friends-sm.jpg 424w, ../assets/media/web/with-friends-lg.jpg 738w" sizes="(max-width: 900px) 50vw, 360px" width="424" height="760" alt="With colleagues and friends" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With colleagues and friends</figcaption>
+            </figure>
+        </div>
+        <div class="gallery-col">
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="5" data-full="../assets/media/web/certificate-lg.jpg" aria-label="View larger: Receiving a certificate of recognition">
+                <img src="../assets/media/web/certificate-sm.jpg" srcset="../assets/media/web/certificate-sm.jpg 570w, ../assets/media/web/certificate-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="Receiving a certificate of recognition" loading="lazy" decoding="async">
+              </button>
+              <figcaption>Receiving a certificate of recognition</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="6" data-full="../assets/media/web/njucm-gift-exchange-lg.jpg" aria-label="View larger: Exchanging gifts with faculty in Nanjing">
+                <img src="../assets/media/web/njucm-gift-exchange-sm.jpg" srcset="../assets/media/web/njucm-gift-exchange-sm.jpg 570w, ../assets/media/web/njucm-gift-exchange-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="Exchanging gifts with faculty in Nanjing" loading="lazy" decoding="async">
+              </button>
+              <figcaption>Exchanging gifts with faculty in Nanjing</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="7" data-full="../assets/media/web/lecture-njucm-lg.jpg" aria-label="View larger: Lecturing at Nanjing University of Chinese Medicine">
+                <img src="../assets/media/web/lecture-njucm-sm.jpg" srcset="../assets/media/web/lecture-njucm-sm.jpg 738w, ../assets/media/web/lecture-njucm-lg.jpg 738w" sizes="(max-width: 900px) 50vw, 360px" width="738" height="463" alt="Lecturing at Nanjing University of Chinese Medicine" loading="lazy" decoding="async">
+              </button>
+              <figcaption>Lecturing at Nanjing University of Chinese Medicine</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="8" data-full="../assets/media/web/fellow-practitioner-lg.jpg" aria-label="View larger: With a fellow practitioner">
+                <img src="../assets/media/web/fellow-practitioner-sm.jpg" srcset="../assets/media/web/fellow-practitioner-sm.jpg 570w, ../assets/media/web/fellow-practitioner-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="With a fellow practitioner" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With a fellow practitioner</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="9" data-full="../assets/media/web/luncheon-lg.jpg" aria-label="View larger: At a celebration luncheon">
+                <img src="../assets/media/web/luncheon-sm.jpg" srcset="../assets/media/web/luncheon-sm.jpg 570w, ../assets/media/web/luncheon-lg.jpg 1200w" sizes="(max-width: 900px) 50vw, 360px" width="570" height="760" alt="At a celebration luncheon" loading="lazy" decoding="async">
+              </button>
+              <figcaption>At a celebration luncheon</figcaption>
+            </figure>
+        </div>
+        <div class="gallery-col">
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="10" data-full="../assets/media/web/njucm-lectern-lg.jpg" aria-label="View larger: At Nanjing University of Chinese Medicine">
+                <img src="../assets/media/web/njucm-lectern-sm.jpg" srcset="../assets/media/web/njucm-lectern-sm.jpg 760w, ../assets/media/web/njucm-lectern-lg.jpg 1600w" sizes="(max-width: 900px) 50vw, 360px" width="760" height="570" alt="At Nanjing University of Chinese Medicine" loading="lazy" decoding="async">
+              </button>
+              <figcaption>At Nanjing University of Chinese Medicine</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="11" data-full="../assets/media/web/heritage-wall-lg.jpg" aria-label="View larger: Before a Chinese medicine heritage wall">
+                <img src="../assets/media/web/heritage-wall-sm.jpg" srcset="../assets/media/web/heritage-wall-sm.jpg 376w, ../assets/media/web/heritage-wall-lg.jpg 738w" sizes="(max-width: 900px) 50vw, 360px" width="376" height="760" alt="Before a Chinese medicine heritage wall" loading="lazy" decoding="async">
+              </button>
+              <figcaption>Before a Chinese medicine heritage wall</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="12" data-full="../assets/media/web/scalp-acupuncture-academy-uk-lg.jpg" aria-label="View larger: With the Academy of Scalp Acupuncture UK">
+                <img src="../assets/media/web/scalp-acupuncture-academy-uk-sm.jpg" srcset="../assets/media/web/scalp-acupuncture-academy-uk-sm.jpg 760w, ../assets/media/web/scalp-acupuncture-academy-uk-lg.jpg 1600w" sizes="(max-width: 900px) 50vw, 360px" width="760" height="570" alt="With the Academy of Scalp Acupuncture UK" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With the Academy of Scalp Acupuncture UK</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="13" data-full="../assets/media/web/clinical-team-lg.jpg" aria-label="View larger: With fellow clinicians">
+                <img src="../assets/media/web/clinical-team-sm.jpg" srcset="../assets/media/web/clinical-team-sm.jpg 727w, ../assets/media/web/clinical-team-lg.jpg 738w" sizes="(max-width: 900px) 50vw, 360px" width="727" height="760" alt="With fellow clinicians" loading="lazy" decoding="async">
+              </button>
+              <figcaption>With fellow clinicians</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button class="gallery-open" type="button" data-index="14" data-full="../assets/media/web/treatment-room-lg.jpg" aria-label="View larger: A calm, light-filled treatment room">
+                <img src="../assets/media/web/treatment-room-sm.jpg" srcset="../assets/media/web/treatment-room-sm.jpg 511w, ../assets/media/web/treatment-room-lg.jpg 738w" sizes="(max-width: 900px) 50vw, 360px" width="511" height="760" alt="A calm, light-filled treatment room" loading="lazy" decoding="async">
+              </button>
+              <figcaption>A calm, light-filled treatment room</figcaption>
+            </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══ -->
+  <div class="cta-band">
+    <div class="container">
+      <h2>Begin Your Own Story</h2>
+      <p>Book a consultation with Nizam at our Marylebone clinic</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="../index.html#contact" class="btn btn-light">Book a Consultation</a>
+        <a href="tel:+447950379038" class="btn btn-outline" style="color:var(--white);border-color:rgba(255,255,255,0.5)">
+          Call +44 795 037 9038
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo">Nature Cure Centre Ltd.</div>
+          <p>
+            Natural healing in the heart of London by Nizam, naturopath and Integrated Acupuncturist, with two decades of experience
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../index.html#treatments">Treatments</a></li>
+            <li><a href="../index.html#conditions">Conditions</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="retreat.html">Retreat</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="disclaimer.html">Disclaimer</a></li>
+
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>4 Baker Street, Marylebone <br>London W1H 6AZ</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <a href="tel:+447950379038">+44 795 037 9038</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:nizamalimed@gmail.com">nizamalimed@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20 15.3 15.3 0 010-20z"/></svg>
+            <a href="https://www.naturecurecentre.com" target="_blank" rel="noopener noreferrer">naturecurecentre.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Nature Cure Centre Ltd. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ LIGHTBOX ══ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <span class="lightbox-count" id="lightboxCount"></span>
+    <button class="lightbox-btn lightbox-close" type="button" data-lb="close" aria-label="Close">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lightbox-btn lightbox-prev" type="button" data-lb="prev" aria-label="Previous image">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+    <button class="lightbox-btn lightbox-next" type="button" data-lb="next" aria-label="Next image">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      const items = Array.from(document.querySelectorAll('.gallery-open'));
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      const count = document.getElementById('lightboxCount');
+      let index = 0, lastFocus = null, touchX = null;
+
+      function show(i) {
+        index = (i + items.length) % items.length;
+        const btn = items[index];
+        const thumb = btn.querySelector('img');
+        img.src = btn.dataset.full;
+        img.alt = thumb.alt;
+        cap.textContent = btn.parentElement.querySelector('figcaption').textContent;
+        count.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+      }
+      function open(i) {
+        lastFocus = document.activeElement;
+        show(i);
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lb.querySelector('.lightbox-close').focus();
+      }
+      function close() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      }
+
+      items.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+      lb.addEventListener('click', (e) => {
+        const action = e.target.closest('[data-lb]');
+        if (action) {
+          const a = action.dataset.lb;
+          if (a === 'close') close();
+          else show(index + (a === 'next' ? 1 : -1));
+        } else if (e.target === lb) {
+          close();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        else if (e.key === 'ArrowRight') show(index + 1);
+        else if (e.key === 'ArrowLeft') show(index - 1);
+        else if (e.key === 'Tab') {
+          const f = Array.from(lb.querySelectorAll('button'));
+          const first = f[0], last = f[f.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+      lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+        touchX = null;
+      });
+    })();
+  </script>
+</body>
+</html>
