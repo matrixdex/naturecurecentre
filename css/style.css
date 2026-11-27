@@ -162,8 +162,17 @@ section { padding: 6rem 0; }
   background: var(--beige-50);
   color: var(--green-800);
 }
-.btn-light:hover {
-  background: var(--white);
+.btn-light:hover,
+.cta-band .btn-light:hover {
+  background: var(--green-900);
+  color: var(--white);
+}
+/* On the darkest green backgrounds, a slightly lighter dark green keeps the hovered button visible */
+.intro-strip .btn-light:hover,
+.testimonials .btn-light:hover,
+.retreat-sidebar .btn-light:hover {
+  background: var(--green-600);
+  color: var(--white);
 }
 
 /* ── NAVIGATION ── */
@@ -914,7 +923,7 @@ section { padding: 6rem 0; }
   color: var(--ink-muted);
   transition: var(--transition);
 }
-.products-tab:hover { color: var(--green-700); }
+.products-tab:hover { background: var(--green-700); color: var(--white); }
 .products-tab.active { background: var(--green-700); border-color: var(--green-700); color: var(--white); }
 .product-card[data-hidden="true"] { display: none; }
 
