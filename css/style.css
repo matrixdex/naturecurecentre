@@ -670,7 +670,7 @@ section { padding: 6rem 0; }
 .about-quote {
   margin-top: 0.5rem;
   padding: 1.5rem 1.75rem;
-  background: var(--beige-50);
+  background: var(--beige-100);
   border-radius: var(--radius-md);
 }
 .about-quote p {
