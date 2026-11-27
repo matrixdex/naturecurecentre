@@ -84,6 +84,7 @@ h4 { font-size: 1.25rem; }
 p { color: var(--ink-soft); }
 
 .display-italic { font-style: italic; color: var(--green-600); }
+.display-italic.upright { font-style: normal; }
 .section-tag {
   font-family: var(--sans);
   font-size: 0.7rem;
@@ -970,7 +971,7 @@ section { padding: 6rem 0; }
 }
 .retreat-content .section-tag { color: var(--green-100); margin-bottom: 1rem; display: block; }
 .retreat-content h2 { color: var(--white); margin-bottom: 1.25rem; margin-top: -0.27em; } /* cap height flush with image top */
-.retreat-content h2 em { font-style: italic; color: var(--green-300); }
+.retreat-content h2 em { font-style: normal; color: var(--green-300); }
 .retreat-content p { color: var(--green-100); line-height: 1.85; margin-bottom: 1.25rem; }
 .retreat-facts {
   display: flex;
@@ -1347,96 +1348,108 @@ footer {
 .mt-2 { margin-top: 2rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
-/* ── HOMEPAGE: two body text sizes ──
-   Large (1.2rem, the Meet Nizam paragraph) for text that was already that size;
-   small (1.1rem) for everything that was smaller. */
-.home {
+/* ══════════════════════════════════════════════════════════
+   BODY TEXT — two sizes, used on every page
+   Large: 1.2rem (19.2px) for lead / long-form paragraphs
+   Small: 1.1rem (17.6px) for supporting text, cards, labels, captions, footer
+   Line spacing is 75% of the original 1.75–1.85.
+   Prefixed with `body` so it wins over page-level <style> blocks.
+   ══════════════════════════════════════════════════════════ */
+:root {
   --body-lg: 1.2rem;
   --body-sm: 1.1rem;
+  --lh-lg: 1.35;
+  --lh-sm: 1.3;
 }
-.home .product-price,
-.home .retreat-content p,
-.home .about-content p,
-.home .about-quote p,
-.home .conditions-intro p,
-.home .contact-info p {
+
+/* Large */
+body .about-content p,
+body .about-quote p,
+body .retreat-content p,
+body .conditions-intro p,
+body .contact-info p,
+body .product-price,
+body .treatment-text p,
+body .retreat-detail-main p,
+body .retreat-detail-main li,
+body .conditions-intro-box p,
+body .story-text p,
+body .legal-highlight p,
+body .container--narrow p,
+body .container--narrow li {
   font-size: var(--body-lg);
+  line-height: var(--lh-lg);
 }
-.home .hero-sub,
-.home .section-header p,
-.home .treatment-card p,
-.home .condition-item,
-.home .product-desc,
-.home .retreat-fact,
-.home .retreat-img-badge .lbl,
-.home .about-img-badge .lbl,
-.home .about-quote cite,
-.home .step p,
-.home .testi-quote,
-.home .testi-name,
-.home .testi-role,
-.home .contact-detail-text strong,
-.home .contact-detail-text a,
-.home .contact-detail-text span,
-.home .map-address,
-.home footer p,
-.home .footer-col ul a,
-.home .footer-contact-item span,
-.home .footer-contact-item a,
-.home .footer-bottom-links a {
+
+/* Small */
+body .hero-sub,
+body .page-hero p,
+body .breadcrumb,
+body .breadcrumb a,
+body .breadcrumb span,
+body .section-header p,
+body .treatment-card p,
+body .condition-item,
+body .condition-card p,
+body .product-desc,
+body .retreat-fact,
+body .retreat-img-badge .lbl,
+body .about-img-badge .lbl,
+body .about-quote cite,
+body .step p,
+body .testi-quote,
+body .testi-name,
+body .testi-role,
+body .contact-detail-text,
+body .contact-detail-text strong,
+body .contact-detail-text a,
+body .contact-detail-text span,
+body .benefit-item,
+body .retreat-pillar p,
+body .retreat-sidebar-text span,
+body .retreat-sidebar-text strong,
+body .legal-updated,
+body figcaption,
+body .thanks-section p,
+body footer p,
+body .footer-brand p,
+body .footer-bottom p,
+body footer li,
+body .footer-col ul a,
+body .footer-contact-item span,
+body .footer-contact-item a,
+body .footer-bottom-links a {
   font-size: var(--body-sm);
+  line-height: var(--lh-sm);
 }
-/* Small uppercase sans labels become body text in the body face */
-.home .retreat-fact,
-.home .retreat-img-badge .lbl,
-.home .about-img-badge .lbl,
-.home .about-quote cite,
-.home .testi-name,
-.home .testi-role,
-.home .contact-detail-text strong,
-.home .map-address,
-.home .footer-bottom p,
-.home .footer-bottom-links a {
+
+/* Small uppercase sans labels become body text in the body face, normal case */
+body .breadcrumb,
+body .breadcrumb a,
+body .breadcrumb span,
+body .retreat-fact,
+body .retreat-img-badge .lbl,
+body .about-img-badge .lbl,
+body .about-quote cite,
+body .testi-name,
+body .testi-role,
+body .contact-detail-text strong,
+body .retreat-sidebar-text strong,
+body .legal-updated,
+body .footer-bottom p,
+body .footer-bottom p a,
+body .footer-bottom-links a {
   font-family: var(--serif2);
   text-transform: none;
   letter-spacing: 0;
-  line-height: 1.5;
-}
-@media (max-width: 500px) {
-  .home .conditions-grid { grid-template-columns: 1fr; }
+  font-weight: 400;
 }
 
-/* ── HOMEPAGE: body line spacing at 75% of the original (titles and conditions table unchanged) ── */
-.home .retreat-content p,
-.home .about-content p { line-height: 1.3875; }       /* was 1.85 */
-.home .hero-sub,
-.home .conditions-intro p,
-.home .contact-info p { line-height: 1.35; }          /* was 1.8 */
-.home .product-price,
-.home .section-header p,
-.home .testi-quote,
-.home .contact-detail-text,
-.home .contact-detail-text a,
-.home .contact-detail-text span,
-.home .footer-brand p,
-.home .footer-col ul li,
-.home .footer-col ul a { line-height: 1.3125; }       /* was 1.75 */
-.home .treatment-card p,
-.home .product-desc,
-.home .step p { line-height: 1.275; }                 /* was 1.7 */
-.home .about-quote p { line-height: 1.2375; }         /* was 1.65 */
-.home .footer-contact-item span,
-.home .footer-contact-item a { line-height: 1.2; }    /* was 1.6 */
-.home .retreat-fact,
-.home .retreat-img-badge .lbl,
-.home .about-img-badge .lbl,
-.home .about-quote cite,
-.home .testi-name,
-.home .testi-role,
-.home .contact-detail-text strong,
-.home .footer-bottom p,
-.home .footer-bottom-links a { line-height: 1.125; }  /* was 1.5 */
-.home .contact-detail-text strong { text-transform: none; font-weight: 400; }
+/* Homepage conditions table keeps its original row spacing */
+body .condition-item { line-height: 1.75; }
+@media (max-width: 500px) {
+  .conditions-grid { grid-template-columns: 1fr; }
+}
 
 /* Product pop-up: no category eyebrow (element kept for the script) */
 #productOverlayCategory { display: none; }
