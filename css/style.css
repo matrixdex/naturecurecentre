@@ -1347,29 +1347,34 @@ footer {
 .mt-2 { margin-top: 2rem; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
-/* ── HOMEPAGE: one body text size (matches the Meet Nizam paragraph) ── */
+/* ── HOMEPAGE: two body text sizes ──
+   Large (1.2rem, the Meet Nizam paragraph) for lead and long-form copy;
+   small (1.1rem) for supporting text, cards, labels and footer. */
 .home {
-  --body-size: 1.2rem;
+  --body-lg: 1.2rem;
+  --body-sm: 1.1rem;
 }
 .home .hero-sub,
+.home .retreat-content p,
+.home .about-content p,
+.home .about-quote p,
+.home .conditions-intro p,
+.home .contact-info p {
+  font-size: var(--body-lg);
+}
 .home .section-header p,
 .home .treatment-card p,
-.home .conditions-intro p,
 .home .condition-item,
 .home .product-desc,
 .home .product-price,
-.home .retreat-content p,
 .home .retreat-fact,
 .home .retreat-img-badge .lbl,
 .home .about-img-badge .lbl,
-.home .about-content p,
-.home .about-quote p,
 .home .about-quote cite,
 .home .step p,
 .home .testi-quote,
 .home .testi-name,
 .home .testi-role,
-.home .contact-info p,
 .home .contact-detail-text strong,
 .home .contact-detail-text a,
 .home .contact-detail-text span,
@@ -1379,7 +1384,7 @@ footer {
 .home .footer-contact-item span,
 .home .footer-contact-item a,
 .home .footer-bottom-links a {
-  font-size: var(--body-size);
+  font-size: var(--body-sm);
 }
 /* Small uppercase sans labels become body text in the body face */
 .home .retreat-fact,
