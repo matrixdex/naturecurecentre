@@ -181,10 +181,13 @@ const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 if (sections.length && navAnchors.length) {
   const secObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
+      const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
       if (e.isIntersecting) {
         navAnchors.forEach(a => a.classList.remove('active'));
-        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (active) active.classList.add('active');
+        if (link) link.classList.add('active');
+      } else if (link) {
+        // Clear the highlight once its section scrolls out of view
+        link.classList.remove('active');
       }
     });
   }, { rootMargin: '-40% 0px -40% 0px' });

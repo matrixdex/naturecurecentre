@@ -234,6 +234,8 @@ section { padding: 6rem 0; }
 .nav-links a:hover::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--green-700); }
 .nav-links a.active::after { transform: scaleX(1); }
+/* Buttons in the nav are never underlined */
+.nav-links a.btn::after { display: none; }
 .nav-cta { margin-left: 1rem; }
 .nav-phone {
   font-family: var(--sans);
