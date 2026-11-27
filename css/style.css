@@ -146,12 +146,9 @@ section { padding: 6rem 0; }
 .btn-primary {
   background: var(--green-700);
   color: white;
-  box-shadow: 0 2px 12px rgba(46,74,50,0.2);
 }
 .btn-primary:hover {
   background: var(--green-600);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(46,74,50,0.28);
 }
 .btn-outline {
   border-color: var(--green-700);
@@ -164,11 +161,9 @@ section { padding: 6rem 0; }
 .btn-light {
   background: var(--beige-50);
   color: var(--green-800);
-  box-shadow: var(--shadow-sm);
 }
 .btn-light:hover {
   background: var(--white);
-  transform: translateY(-1px);
 }
 
 /* ── NAVIGATION ── */
@@ -234,6 +229,8 @@ section { padding: 6rem 0; }
 .nav-links a:hover::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--green-700); }
 .nav-links a.active::after { transform: scaleX(1); }
+/* Buttons: no movement, shadow or glow; hover changes background and text colour only */
+.btn, .btn:hover, .products-tab, .products-tab:hover { box-shadow: none; transform: none; filter: none; }
 /* Buttons in the nav are never underlined */
 .nav-links a.btn::after { display: none; }
 .nav-cta { margin-left: 1rem; }
@@ -860,7 +857,6 @@ section { padding: 6rem 0; }
 }
 .product-card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
 }
 .product-image {
   width: 100%;
@@ -918,7 +914,7 @@ section { padding: 6rem 0; }
   color: var(--ink-muted);
   transition: var(--transition);
 }
-.products-tab:hover { border-color: var(--green-500); color: var(--green-700); }
+.products-tab:hover { color: var(--green-700); }
 .products-tab.active { background: var(--green-700); border-color: var(--green-700); color: var(--white); }
 .product-card[data-hidden="true"] { display: none; }
 
