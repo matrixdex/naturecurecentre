@@ -1437,3 +1437,6 @@ footer {
 .home .footer-bottom p,
 .home .footer-bottom-links a { line-height: 1.125; }  /* was 1.5 */
 .home .contact-detail-text strong { text-transform: none; font-weight: 400; }
+
+/* Product pop-up: no category eyebrow (element kept for the script) */
+#productOverlayCategory { display: none; }
