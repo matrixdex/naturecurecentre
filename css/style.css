@@ -631,7 +631,7 @@ section { padding: 6rem 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6rem;
-  align-items: center;
+  align-items: start;
 }
 .about-img-col { position: relative; }
 .about-img-frame {
@@ -693,7 +693,7 @@ section { padding: 6rem 0; }
 }
 
 .about-content .section-tag { margin-bottom: 1rem; }
-.about-content h2 { margin-bottom: 0.5rem; }
+.about-content h2 { margin-bottom: 0.5rem; margin-top: -0.27em; } /* cap height flush with image top */
 .about-content p { margin-top: 1.25rem; color: var(--ink-muted); line-height: 1.85; }
 .about-accreditations {
   display: grid;
@@ -933,7 +933,7 @@ section { padding: 6rem 0; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  align-items: center;
+  align-items: start;
 }
 .retreat-img-col { position: relative; }
 .retreat-img-frame {
@@ -970,7 +970,7 @@ section { padding: 6rem 0; }
   margin-top: 0.35rem;
 }
 .retreat-content .section-tag { color: var(--green-100); margin-bottom: 1rem; display: block; }
-.retreat-content h2 { color: var(--white); margin-bottom: 1.25rem; }
+.retreat-content h2 { color: var(--white); margin-bottom: 1.25rem; margin-top: -0.27em; } /* cap height flush with image top */
 .retreat-content h2 em { font-style: italic; color: var(--green-300); }
 .retreat-content p { color: var(--green-100); line-height: 1.85; margin-bottom: 1.25rem; }
 .retreat-facts {
