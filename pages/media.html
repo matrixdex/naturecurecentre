@@ -44,6 +44,24 @@
       object-fit: cover;
     }
     .story-player video::cue { color: transparent; background: transparent; }
+    /* Fullscreen: keep the video vertical, letterboxed in black */
+    .story-player video:fullscreen { object-fit: contain; background: #000; }
+    .story-player video:-webkit-full-screen { object-fit: contain; background: #000; }
+    /* Our overlay can't follow the video into fullscreen, so native cues take over there */
+    .story-player video:fullscreen::cue {
+      color: #fff;
+      background: transparent;
+      font-family: var(--serif2);
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    .story-player video:-webkit-full-screen::cue {
+      color: #fff;
+      background: transparent;
+      font-family: var(--serif2);
+      font-size: 2rem;
+      font-weight: 500;
+    }
     .story-subs {
       position: absolute;
       left: 8%;
@@ -60,7 +78,7 @@
       transition: opacity 0.2s ease;
     }
     .story-subs.on { opacity: 1; }
-    .story-video figcaption { color: var(--ink-muted); margin-top: 1rem; }
+    .story-video figcaption { color: var(--ink-muted); margin-top: 1rem; text-align: center; }
     .story-quote {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.4vw, 2.75rem);
@@ -312,7 +330,7 @@
       if (!track) return;
       let enabled = true, syncing = false;
       function render() {
-        const cue = enabled && track.activeCues && track.activeCues[0];
+        const cue = enabled && !isFullscreen() && track.activeCues && track.activeCues[0];
         subs.textContent = '';
         if (cue) {
           cue.text.split('\n').forEach((line, i) => {
@@ -322,16 +340,28 @@
         }
         subs.classList.toggle('on', !!cue);
       }
-      function hide() { syncing = true; track.mode = 'hidden'; syncing = false; }
-      hide();
+      function isFullscreen() {
+        const el = document.fullscreenElement || document.webkitFullscreenElement;
+        return el === video || video.webkitDisplayingFullscreen === true;
+      }
+      // Overlay subtitles normally; native cues (styled via ::cue) in fullscreen.
+      function sync() {
+        syncing = true;
+        track.mode = !enabled ? 'disabled' : (isFullscreen() ? 'showing' : 'hidden');
+        syncing = false;
+        render();
+      }
+      sync();
       track.addEventListener('cuechange', render);
-      // The browser's CC menu toggles our subtitles on and off.
+      // The browser's CC menu toggles subtitles on and off.
       video.textTracks.addEventListener('change', () => {
         if (syncing) return;
-        if (track.mode === 'showing') { enabled = true; hide(); }
-        else if (track.mode === 'disabled') { enabled = false; }
-        render();
+        if (track.mode === 'showing') enabled = true;
+        else if (track.mode === 'disabled') enabled = false;
+        sync();
       });
+      ['fullscreenchange', 'webkitfullscreenchange'].forEach(ev => document.addEventListener(ev, sync));
+      ['webkitbeginfullscreen', 'webkitendfullscreen'].forEach(ev => video.addEventListener(ev, () => setTimeout(sync, 0)));
     })();
   </script>
 </body>
