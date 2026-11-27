@@ -1436,4 +1436,4 @@ footer {
 .home .contact-detail-text strong,
 .home .footer-bottom p,
 .home .footer-bottom-links a { line-height: 1.125; }  /* was 1.5 */
-.home .contact-detail-text strong { text-transform: uppercase; font-weight: 400; }
+.home .contact-detail-text strong { text-transform: none; font-weight: 400; }
