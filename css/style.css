@@ -1348,13 +1348,13 @@ footer {
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
 /* ── HOMEPAGE: two body text sizes ──
-   Large (1.2rem, the Meet Nizam paragraph) for lead and long-form copy;
-   small (1.1rem) for supporting text, cards, labels and footer. */
+   Large (1.2rem, the Meet Nizam paragraph) for text that was already that size;
+   small (1.1rem) for everything that was smaller. */
 .home {
   --body-lg: 1.2rem;
   --body-sm: 1.1rem;
 }
-.home .hero-sub,
+.home .product-price,
 .home .retreat-content p,
 .home .about-content p,
 .home .about-quote p,
@@ -1362,11 +1362,11 @@ footer {
 .home .contact-info p {
   font-size: var(--body-lg);
 }
+.home .hero-sub,
 .home .section-header p,
 .home .treatment-card p,
 .home .condition-item,
 .home .product-desc,
-.home .product-price,
 .home .retreat-fact,
 .home .retreat-img-badge .lbl,
 .home .about-img-badge .lbl,
