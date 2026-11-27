@@ -1405,3 +1405,34 @@ footer {
 @media (max-width: 500px) {
   .home .conditions-grid { grid-template-columns: 1fr; }
 }
+
+/* ── HOMEPAGE: body line spacing at 75% of the original (titles and conditions table unchanged) ── */
+.home .retreat-content p,
+.home .about-content p { line-height: 1.3875; }       /* was 1.85 */
+.home .hero-sub,
+.home .conditions-intro p,
+.home .contact-info p { line-height: 1.35; }          /* was 1.8 */
+.home .product-price,
+.home .section-header p,
+.home .testi-quote,
+.home .contact-detail-text,
+.home .contact-detail-text a,
+.home .contact-detail-text span,
+.home .footer-brand p,
+.home .footer-col ul li,
+.home .footer-col ul a { line-height: 1.3125; }       /* was 1.75 */
+.home .treatment-card p,
+.home .product-desc,
+.home .step p { line-height: 1.275; }                 /* was 1.7 */
+.home .about-quote p { line-height: 1.2375; }         /* was 1.65 */
+.home .footer-contact-item span,
+.home .footer-contact-item a { line-height: 1.2; }    /* was 1.6 */
+.home .retreat-fact,
+.home .retreat-img-badge .lbl,
+.home .about-img-badge .lbl,
+.home .about-quote cite,
+.home .testi-name,
+.home .testi-role,
+.home .contact-detail-text strong,
+.home .footer-bottom p,
+.home .footer-bottom-links a { line-height: 1.125; }  /* was 1.5 */
